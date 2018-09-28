@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--多张图片预览功能-->
+    <meta charset="UTF-8">
+    <title>多张图片预览功能</title>
+    <style>
+        .imgShow {
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    请选择图片：<input type="file" id="inputImg" accept="image/*" @change="preview($event)" multiple>
+    <div>
+        <img class="imgShow" v-for="pic in pics" :src="pic">
+    </div>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        methods: {
+            preview(event) {
+                let files = document.getElementById("inputImg").files;
+                for (var i = 0; i < files.length; i++) {
+                    let file = files[i]
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file)
+                    reader.onload = function (e) {
+                        console.log(e)
+                        vm.pics.push(e.target.result)
+                    }
+                }
+            }
+        },
+        data: {
+            pics: []
+        }
+    })
+
+</script>
+</body>
+</html>
