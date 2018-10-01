@@ -19,6 +19,29 @@
             margin: 10px;
             height: 100px;
             background-color: #9fcdff;
+        }
+
+        .preview-float-img-box{
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            position: fixed;
+            text-align: center;
+            top: 40px;
+            left: 500px;
+            width: 500px;
+            height: 500px;
+
+        }
+        .preview-float-close{
+            background-color: red;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            position: fixed;
+            top: 50px;
+            left: 950px;
+
 
         }
 
@@ -30,7 +53,8 @@
     请选择图片：<input type="file" id="inputImg" accept="image/*" @change="preview($event)" multiple>
     <div class="preview-img-box">
         <div>
-            <img class="imgShow" v-for="pic in pics" draggable="true" @drag="drag($event)" :src="pic">
+            <img class="imgShow" v-for="pic in pics" draggable="true" @drag="drag($event)" :src="pic"
+                 @click="bigImg(pic)"  >
         </div>
     </div>
     <hr>
@@ -39,7 +63,10 @@
     </div>
     <div>
         <div class="preview-img-box-sm" @drop="drop($event)" @dragover="allDrop($event)" v-for=" picType in picTypes"><span class="text-body">{{picType.picType}}</span></div>
-
+    </div>
+    <div v-show="currentPic">
+        <img class="preview-float-img-box"  :src="currentPic" >
+        <button @click="closeImg()" class="preview-float-close btn btn-danger btn-sm">&timesb;</button>
     </div>
 </div>
 <script src="../node_modules/vue/dist/vue.js"></script>
@@ -47,6 +74,12 @@
     let vm = new Vue({
         el: "#app",
         methods: {
+            closeImg(){
+                this.currentPic = ''
+            },
+            bigImg(pic){
+                this.currentPic = pic;
+            },
             drag(event){
                 this.dom = event.currentTarget;
             },
@@ -82,7 +115,7 @@
         },
         data: {
             dom:'',
-
+            currentPic:'',
             pics: [],
             picTypes:[],
             tempPicType:''
