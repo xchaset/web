@@ -8,3 +8,8 @@
 - 4.npm install vue axios bootstrap
 - 5.npm run dev 启动项目
 
+### npm init 
+
+### npm install vue axios bootstrap
+
+

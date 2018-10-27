@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>父亲：{{money}}
+    <child :m="money" @child-msg="things"></child>
+    </div>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        methods:{
+            things(val){
+                this.money = val
+            }
+        },
+        data:{
+            money:100
+        },
+        components:{
+            child:{
+                props:{
+                    m:{
+                        type:[String,Number],
+                        required:true
+                    }
+                },
+                template:'<div>儿子: {{m}} <button @click="getMoney()">多给钱</button></div>',
+                methods:{
+                    getMoney(){
+                        this.$emit("child-msg",300)
+                    }
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
