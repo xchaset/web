@@ -3,5 +3,6 @@ node_modules
 secondvue/
 .iml
 target/
+#eclipse
 *.classpath
 *.project
