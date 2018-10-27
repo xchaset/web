@@ -3,3 +3,5 @@ node_modules
 secondvue/
 .iml
 target/
+*.classpath
+*.project
