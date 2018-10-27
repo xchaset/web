@@ -4,3 +4,4 @@ secondvue/
 .iml
 target/
 *.classpath
+*.project
