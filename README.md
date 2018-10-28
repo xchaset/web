@@ -23,3 +23,14 @@
 . git push origin develop  推到自己的起源代码仓库
 . 在网页上创建pull request向管理员提交变更
 ```
+
+### git rabase 用法
+```
+git pull --rebase origin master  
+```
+OR 
+```
+git fetch origin
+git rebase origin/master
+```
+
