@@ -23,3 +23,7 @@
 . git push origin develop  推到自己的起源代码仓库
 . 在网页上创建pull request向管理员提交变更
 ```
+
+### 远程登录SSH免密
+- 生成公私钥 ssh-keygen -t rsa
+- 将公钥上传到目标服务器 ssh-copy-id -i ~/.ssh/id_rsa.pub username@ip
