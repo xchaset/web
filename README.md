@@ -34,3 +34,6 @@ git fetch origin
 git rebase origin/master
 ```
 
+### 远程登录SSH免密
+- 生成公私钥 ssh-keygen -t rsa
+- 将公钥上传到目标服务器 ssh-copy-id -i ~/.ssh/id_rsa.pub username@ip
